@@ -1,4 +1,4 @@
-function atualizar(){
+function Atualizar(){
 var res=document.getElementById('horario')
 var data = new Date()//importando Date()
         var hora = data.getHours()<=9 ? "0"+data.getHours(): data.getHours()
@@ -8,6 +8,9 @@ var data = new Date()//importando Date()
 }
 setInterval(Atualizar, 1000)
 
+
+function buscar(){
+fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cidade}&count=10&language=pt&format=json`)
 //entra em contato com a API
 fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.1864&longitude=-46.8842&hourly=temperature_2m")
 //tranforma a resposta dela em json
@@ -22,4 +25,4 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.1864&longitude=-46.88
   document.getElementById("vento").innerHTML =
   dados.hourly.velocidade_do_vento_10m + " km/h";
 })
-
+}
