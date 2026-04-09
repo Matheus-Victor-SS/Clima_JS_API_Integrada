@@ -10,7 +10,7 @@ setInterval(Atualizar, 1000)
 
 
 function buscar(){
-fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${cidade}&count=10&language=pt&format=json`)
+fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(cidade)}&count=10&language=pt&format=json`)
 //entra em contato com a API
 fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.1864&longitude=-46.8842&hourly=temperature_2m")
 //tranforma a resposta dela em json
