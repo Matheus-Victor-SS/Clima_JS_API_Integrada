@@ -4,8 +4,40 @@
   transition: 0.5s;
 }
 body{
+    background-color: rgb(142, 187, 255);
+    text-align: center;
+    margin: auto;
+    margin-top: 40px;
 
 }
+.container{
+    background-color: aliceblue;
+    width: 30%;
+    height: 30%;
+}
 h1,h2{
-    
+    color: white;
+    text-align: center;
+    margin: auto;
+    margin-bottom: 10px;
+}
+#btn{
+    display: flex;
+    width: 90px;
+    height: 50px;
+    text-align: center;
+    margin: auto;
+    background-color: whitesmoke;
+    color: rgb(31, 121, 194);
+}
+#btn:hover{
+    background-color: rgb(31, 121, 194);
+    transform: scale(1.05);
+    color: whitesmoke;
+}
+input{
+    border-radius: 30px;
+    border-color: transparent;
+    width: 200px;
+    height: 30px;
 }
