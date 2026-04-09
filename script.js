@@ -11,6 +11,7 @@ setInterval(Atualizar, 1000)
 
 
 function buscar(){
+    document.getElementById("resultado").classList.remove("escondido");
     var cidade = document.getElementById("cidadee").value
     var cidadeselecionada = document.getElementById("cidadeselecionada")
     //pega o valor do input e tranforma em coordenadas

@@ -7,9 +7,12 @@
      <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Insira a Cidade que deseja saber o Clima</h1>
+    <h1>CLIMA</h1>
+    <h2>Insira a Cidade:</h2>
     <input type="text" id="cidadee">
     <input type="button" value="Procurar" id="btn" onclick="buscar()">
+
+<div id="resultado" class="escondido">
     <p id="cidadeselecionada"></p>
     <p id="horario"></p>
     <p id="temp"></p>
@@ -21,6 +24,8 @@
     <p id="vento"></p>
     <p>mm de chuva:<br></p>
     <p id="chuva"></p>
+</div>
+
     <script src="script.js"></script>
 </body>
 </html>

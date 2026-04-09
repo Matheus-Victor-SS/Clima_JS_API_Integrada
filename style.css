@@ -1,0 +1,11 @@
+.escondido {
+  display: none;
+  opacity: 0;
+  transition: 0.5s;
+}
+body{
+
+}
+h1,h2{
+    
+}
