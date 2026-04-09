@@ -33,7 +33,7 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     var long = (city.results[0].longitude)
     }
 //entra em contato com a API e coloca os valores de latitude e longitude convertidos
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m`)
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`)
 //tranforma a resposta dela em json
 .then(res=>res.json())
 .then(dados =>{
@@ -42,9 +42,9 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&
     document.getElementById("temp").innerHTML =
   dados.hourly.temperature_2m[0] + "°C";
   document.getElementById("umidade").innerHTML =
-  dados.hourly.umidade_relativa_2m + " %";
+  dados.hourly.relative_humidity_2m[0] + " %";
   document.getElementById("vento").innerHTML =
-  dados.hourly.velocidade_do_vento_10m + " km/h";
+  dados.hourly.wind_speed_10m[0] + " km/h";
   })
 })
 }
