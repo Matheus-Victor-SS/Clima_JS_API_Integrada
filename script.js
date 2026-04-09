@@ -33,12 +33,13 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     var long = (city.results[0].longitude)
     }
 //entra em contato com a API e coloca os valores de latitude e longitude convertidos
+//no fim da requisição coloco os parametros e valores que quero
 fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,rain,apparent_temperature`)
 //tranforma a resposta dela em json
 .then(res=>res.json())
 .then(dados =>{
     console.log(dados)
-    //imprimindo temperatura
+    //imprimindo valores
     document.getElementById("temp").innerHTML =
   dados.hourly.temperature_2m[0] + "°C";
   document.getElementById("tempaparent").innerHTML =
