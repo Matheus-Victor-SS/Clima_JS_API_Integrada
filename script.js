@@ -24,7 +24,7 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
         cidadeselecionada.innerHTML="cidade não encontrada"
     }else{
     //escreva a cidade e aparece as coordenadas
-    cidadeselecionada.innerHTML=`${cidade}`
+    cidadeselecionada.innerHTML=`${city.results[0].name}`
     console.log(city.results[0].latitude)
     console.log(city.results[0].longitude)
     }
