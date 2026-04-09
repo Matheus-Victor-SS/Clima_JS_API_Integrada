@@ -23,14 +23,17 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     if(!city.results){
         cidadeselecionada.innerHTML="cidade não encontrada"
     }else{
-    //escreva a cidade e aparece as coordenadas
+    //escreve a cidade, aparece o resultado encontrado mais proximo
+    // e aparece as coordenadas
     cidadeselecionada.innerHTML=`${city.results[0].name}`
+
     console.log(city.results[0].latitude)
     console.log(city.results[0].longitude)
+    var lat = (city.results[0].latitude)
+    var long = (city.results[0].longitude)
     }
-})
-//entra em contato com a API
-fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.1864&longitude=-46.8842&hourly=temperature_2m")
+//entra em contato com a API e coloca os valores de latitude e longitude convertidos
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m`)
 //tranforma a resposta dela em json
 .then(res=>res.json())
 .then(dados =>{
@@ -42,5 +45,6 @@ fetch("https://api.open-meteo.com/v1/forecast?latitude=-23.1864&longitude=-46.88
   dados.hourly.umidade_relativa_2m + " %";
   document.getElementById("vento").innerHTML =
   dados.hourly.velocidade_do_vento_10m + " km/h";
+  })
 })
 }
