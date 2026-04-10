@@ -9,41 +9,54 @@ var data = new Date()//importando Date()
 }
 setInterval(Atualizar, 1000)
 
+//AUTO INCREMENT
 const input = document.getElementById('cidadee')
 const sugestoes = document.getElementById('sugestoes')
+const cidadesVistas = new Set();//armazena cidades duplicadas
+
 //fica observando a todo momento oq o user digita, async para usar await
 input.addEventListener('input', async () => {
-
     const texto = input.value
-
-    // só busca se tiver 3 letras
-    if (texto.length < 3) {
+    
+    //se tiver menos q 2 letras nem faz
+    if (texto.length < 2) {
         sugestoes.innerHTML = ''
         return
     }
-    //await aguarda uma resposta da API
-    const resposta = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${texto}`)
-    //converte para JSON
-    const dados = await resposta.json()
-
+    //await aguarda a API enviar resposta
+    const resposta = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${texto}&language=pt&count=10&format=json`)
+    const dados = await resposta.json()//converte em JSON
+    
     sugestoes.innerHTML = ''
-//se a API nao enviar nada
+    //se nao enviar resultado
     if (!dados.results) return
-//olha cada cidade
+    
+    //vai buscar as cidades e cria um container para cada opção
     dados.results.forEach(cidade => {
         const item = document.createElement('div')
-//a cada cidade enontrada vai criando uma div
-        item.innerText = cidade.name
-//quando clicar na sugestao vai preencher o input
+        
+        // Nome + País + Estado
+        let textoExibir = cidade.name
+        
+        if (cidade.country) {
+            textoExibir += ` (${cidade.country})`
+        }
+        //caso tenha centro administrativo
+        if (cidade.admin1) {
+            textoExibir += ` - ${cidade.admin1}`
+        }
+        
+        item.innerHTML = textoExibir
+        //quando clicar na opção vai preencher o input
         item.onclick = () => {
             input.value = cidade.name
             sugestoes.innerHTML = ''
+            buscar()
         }
-
+        
         sugestoes.appendChild(item)
     })
 })
-
 function buscar(){
     document.getElementById("resultado").classList.remove("escondido");
     var cidade = document.getElementById("cidadee").value

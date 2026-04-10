@@ -358,3 +358,148 @@ body::after {
 .card-search:hover::after, .card-weather:hover::after {
     opacity: 1;
 }
+/* Container do autocomplete - precisa ser relative */
+.search-box {
+    position: relative;
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* Caixa de sugestões - FORA do fluxo normal */
+#sugestoes {
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 0;
+    right: auto;
+    min-width: 300px;
+    width: auto;
+    background: white;
+    border-radius: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+    z-index: 9999;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    display: none;
+    animation: fadeInDown 0.2s ease;
+    border: 1px solid rgba(30, 144, 255, 0.2);
+}
+
+#sugestoes:not(:empty) {
+    display: block;
+}
+
+/* Item de sugestão - maior e mais visível */
+#sugestoes div {
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1px solid #eef2f6;
+    color: #1a3a5c;
+    font-weight: 500;
+    font-size: 1rem;
+    background: white;
+}
+
+#sugestoes div:first-child {
+    border-radius: 20px 20px 0 0;
+}
+
+#sugestoes div:last-child {
+    border-bottom: none;
+    border-radius: 0 0 20px 20px;
+}
+
+#sugestoes div:hover {
+    background: linear-gradient(135deg, #1e90ff, #0066cc);
+    color: white;
+    padding-left: 25px;
+}
+
+/* Animação */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Scrollbar personalizada */
+#sugestoes::-webkit-scrollbar {
+    width: 8px;
+}
+
+#sugestoes::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+#sugestoes::-webkit-scrollbar-thumb {
+    background: linear-gradient(135deg, #1e90ff, #0066cc);
+    border-radius: 10px;
+}
+
+#sugestoes::-webkit-scrollbar-thumb:hover {
+    background: #0056b3;
+}
+
+/* Ajuste para mobile */
+@media (max-width: 550px) {
+    #sugestoes {
+        min-width: 250px;
+        max-height: 250px;
+    }
+    
+    #sugestoes div {
+        padding: 12px 16px;
+        font-size: 0.9rem;
+    }
+}
+/* Garantir que o container não corte as sugestões */
+.card-search {
+    overflow: visible !important;
+}
+
+.search-container, .search-box {
+    overflow: visible !important;
+}
+/* Deixar o texto das sugestões com mais detalhes */
+#sugestoes div {
+    padding: 14px 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-bottom: 1px solid #eef2f6;
+    color: #1a3a5c;
+    font-weight: 500;
+    font-size: 0.95rem;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#sugestoes div:hover span.country {
+    color: rgba(255,255,255,0.8);
+}
+/* Forçar sugestões sobre tudo */
+#sugestoes {
+    z-index: 99999 !important;
+}
+
+.card-weather {
+    z-index: 1;
+}
+
+.card-search {
+    z-index: 10;
+    position: relative;
+}
+
+.search-box {
+    position: relative;
+    z-index: 20;
+}
