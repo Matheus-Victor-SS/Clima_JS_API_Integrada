@@ -9,6 +9,40 @@ var data = new Date()//importando Date()
 }
 setInterval(Atualizar, 1000)
 
+const input = document.getElementById('cidadee')
+const sugestoes = document.getElementById('sugestoes')
+//fica observando a todo momento oq o user digita, async para usar await
+input.addEventListener('input', async () => {
+
+    const texto = input.value
+
+    // só busca se tiver 3 letras
+    if (texto.length < 3) {
+        sugestoes.innerHTML = ''
+        return
+    }
+    //await aguarda uma resposta da API
+    const resposta = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${texto}`)
+    //converte para JSON
+    const dados = await resposta.json()
+
+    sugestoes.innerHTML = ''
+//se a API nao enviar nada
+    if (!dados.results) return
+//olha cada cidade
+    dados.results.forEach(cidade => {
+        const item = document.createElement('div')
+//a cada cidade enontrada vai criando uma div
+        item.innerText = cidade.name
+//quando clicar na sugestao vai preencher o input
+        item.onclick = () => {
+            input.value = cidade.name
+            sugestoes.innerHTML = ''
+        }
+
+        sugestoes.appendChild(item)
+    })
+})
 
 function buscar(){
     document.getElementById("resultado").classList.remove("escondido");
