@@ -1,43 +1,360 @@
-.escondido {
-  display: none;
-  opacity: 0;
-  transition: 0.5s;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
-    background-color: rgb(142, 187, 255);
-    text-align: center;
-    margin: auto;
-    margin-top: 40px;
 
-}
-.container{
-    background-color: aliceblue;
-    width: 30%;
-    height: 30%;
-}
-h1,h2{
-    color: white;
-    text-align: center;
-    margin: auto;
-    margin-bottom: 10px;
-}
-#btn{
+body {
+    background: linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
+    font-family: -apple-system, 'Segoe UI', 'Poppins', sans-serif;
+    min-height: 100vh;
     display: flex;
-    width: 90px;
-    height: 50px;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Efeito de nuvens */
+body::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 2px, transparent 2px);
+    background-size: 40px 40px;
+    pointer-events: none;
+}
+
+body::after {
+    content: '☁️';
+    position: absolute;
+    font-size: 120px;
+    opacity: 0.1;
+    top: 20px;
+    right: 20px;
+    pointer-events: none;
+    animation: float 20s infinite ease-in-out;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateX(0) translateY(0); }
+    50% { transform: translateX(-30px) translateY(-20px); }
+}
+
+.app {
+    max-width: 550px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+/* Card de Busca */
+.card-search {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 35px 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.card-search:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 25px 45px rgba(0, 0, 0, 0.15);
+}
+
+.logo {
     text-align: center;
-    margin: auto;
-    background-color: whitesmoke;
-    color: rgb(31, 121, 194);
+    margin-bottom: 30px;
 }
-#btn:hover{
-    background-color: rgb(31, 121, 194);
-    transform: scale(1.05);
-    color: whitesmoke;
+
+.logo-icon {
+    font-size: 3.5rem;
+    display: block;
+    margin-bottom: 10px;
+    animation: wave 3s infinite;
 }
-input{
+
+@keyframes wave {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(10deg); }
+    75% { transform: rotate(-10deg); }
+}
+
+.logo h1 {
+    background: linear-gradient(135deg, #1e90ff, #0056b3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.logo p {
+    color: #6c757d;
+    font-size: 0.85rem;
+}
+
+.search-box {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.search-box input {
+    flex: 1;
+    padding: 15px 20px;
+    border: 2px solid #e0e7ff;
+    border-radius: 35px;
+    font-size: 1rem;
+    background: white;
+    outline: none;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.search-box input:focus {
+    border-color: #1e90ff;
+    box-shadow: 0 0 0 3px rgba(30, 144, 255, 0.1);
+}
+
+.search-box button {
+    padding: 15px 28px;
+    border: none;
+    border-radius: 35px;
+    background: linear-gradient(135deg, #1e90ff, #0066cc);
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 12px rgba(30, 144, 255, 0.3);
+}
+
+.search-box button:hover {
+    background: linear-gradient(135deg, #0066cc, #0052a3);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(30, 144, 255, 0.4);
+}
+
+.search-box button:active {
+    transform: translateY(0);
+}
+
+/* Card de Clima */
+.card-weather {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 40px;
+    padding: 35px 30px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.escondido {
+    display: none;
+}
+
+.card-weather:not(.escondido) {
+    animation: slideUp 0.5s ease;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.city-header {
+    text-align: center;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #e0e7ff;
+}
+
+.city-header h2 {
+    color: #1a3a5c;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.time-info {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #f0f7ff;
+    padding: 6px 15px;
     border-radius: 30px;
-    border-color: transparent;
-    width: 200px;
-    height: 30px;
+}
+
+.time-icon {
+    font-size: 1rem;
+}
+
+.time {
+    color: #4a5568;
+    font-size: 0.9rem;
+    font-family: monospace;
+    font-weight: 500;
+}
+
+.temp-principal {
+    text-align: center;
+    margin: 30px 0;
+    padding: 25px;
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.1), rgba(0, 102, 204, 0.05));
+    border-radius: 60px;
+    position: relative;
+    overflow: hidden;
+}
+
+.temp-principal::before {
+    content: '🌡️';
+    position: absolute;
+    font-size: 80px;
+    opacity: 0.05;
+    left: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.temp-numero {
+    font-size: 5.5rem;
+    font-weight: 800;
+    color: #1e90ff;
+    line-height: 1;
+}
+
+.temp-simbolo {
+    font-size: 2rem;
+    color: #1a3a5c;
+    margin-left: 5px;
+    font-weight: 600;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.info-item {
+    background: #f8faff;
+    border-radius: 25px;
+    padding: 18px 15px;
+    text-align: center;
+    transition: all 0.3s;
+    border: 1px solid rgba(30, 144, 255, 0.1);
+}
+
+.info-item:hover {
+    transform: translateY(-3px);
+    background: white;
+    border-color: rgba(30, 144, 255, 0.2);
+    box-shadow: 0 8px 20px rgba(30, 144, 255, 0.1);
+}
+
+.info-icon-wrap {
+    background: linear-gradient(135deg, rgba(30, 144, 255, 0.1), rgba(0, 102, 204, 0.05));
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+}
+
+.info-icon {
+    font-size: 1.8rem;
+}
+
+.info-label {
+    color: #6c757d;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.info-value {
+    color: #1a3a5c;
+    font-size: 1.3rem;
+    font-weight: 700;
+    display: block;
+}
+
+/* Responsivo */
+@media (max-width: 550px) {
+    .card-search, .card-weather {
+        padding: 25px 20px;
+    }
+    
+    .temp-numero {
+        font-size: 4rem;
+    }
+    
+    .temp-simbolo {
+        font-size: 1.5rem;
+    }
+    
+    .info-grid {
+        gap: 10px;
+    }
+    
+    .info-item {
+        padding: 12px;
+    }
+    
+    .info-value {
+        font-size: 1.1rem;
+    }
+    
+    .search-box button {
+        padding: 12px 20px;
+        font-size: 0.9rem;
+    }
+    
+    .search-box input {
+        padding: 12px 18px;
+    }
+}
+
+/* Efeito de brilho nos cards */
+.card-search, .card-weather {
+    position: relative;
+    overflow: hidden;
+}
+
+.card-search::after, .card-weather::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -60%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.5s;
+    pointer-events: none;
+}
+
+.card-search:hover::after, .card-weather:hover::after {
+    opacity: 1;
 }

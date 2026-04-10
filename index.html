@@ -4,29 +4,72 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Clima</title>
-     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>CLIMA</h1>
-    <container>
-    <h2>Insira a Cidade:</h2>
-    <input type="text" id="cidadee"><br><br>
-    <input type="button" value="Procurar" id="btn" onclick="buscar()">
+    <div class="app">
+        <div class="card-search">
+            <div class="logo">
+                <span class="logo-icon">⛅</span>
+                <h1>CLIMA</h1>
+                <p>Previsão do tempo</p>
+            </div>
+            
+            <div class="search-box">
+                <input type="text" id="cidadee" placeholder="Digite sua cidade..." autocomplete="off">
+                <button onclick="buscar()">
+                    <span></span> Procurar
+                </button>
+            </div>
+        </div>
 
-<div id="resultado" class="escondido">
-    <p id="cidadeselecionada"></p>
-    <p id="horario"></p>
-    <p id="temp"></p>
-    <p>Temperatura aparente:<br></p>
-    <p id="tempaparent"></p>
-    <p>Umidade do ar:<br></p>
-    <p id="umidade"></p>
-    <p>Velocidade do vento:<br></p>
-    <p id="vento"></p>
-    <p>mm de chuva:<br></p>
-    <p id="chuva"></p>
-</div>
-</container>
+        <div id="resultado" class="card-weather escondido">
+            <div class="city-header">
+                <h2 id="cidadeselecionada">---</h2>
+                <div class="time-info">
+                    <span class="time-icon">🕐</span>
+                    <span id="horario" class="time">--:--:--</span>
+                </div>
+            </div>
+
+            <div class="temp-principal">
+                <span class="temp-numero" id="temp">--</span>
+                <span class="temp-simbolo">°C</span>
+            </div>
+
+            <div class="info-grid">
+                <div class="info-item">
+                    <div class="info-icon-wrap">
+                        <span class="info-icon">🌡️</span>
+                    </div>
+                    <span class="info-label">Sensação térmica</span>
+                    <span class="info-value" id="tempaparent">--°C</span>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon-wrap">
+                        <span class="info-icon">💧</span>
+                    </div>
+                    <span class="info-label">Umidade do ar</span>
+                    <span class="info-value" id="umidade">--%</span>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon-wrap">
+                        <span class="info-icon">💨</span>
+                    </div>
+                    <span class="info-label">Velocidade do vento</span>
+                    <span class="info-value" id="vento">--km/h</span>
+                </div>
+                <div class="info-item">
+                    <div class="info-icon-wrap">
+                        <span class="info-icon">🌧️</span>
+                    </div>
+                    <span class="info-label">Precipitação</span>
+                    <span class="info-value" id="chuva">--mm</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
