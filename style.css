@@ -206,17 +206,6 @@ body {
     position: relative;
     overflow: hidden;
 }
-
-.temp-principal::before {
-    content: '🌡️';
-    position: absolute;
-    font-size: 80px;
-    opacity: 0.05;
-    left: -20px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
 .temp-numero {
     font-size: 5.5rem;
     font-weight: 800;
