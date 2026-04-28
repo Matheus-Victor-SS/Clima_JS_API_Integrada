@@ -106,7 +106,7 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&
     //pega o numero traduzido e substitui no local do HTML
     var weathercode = dados.hourly.weathercode[0];
      document.getElementById("climaDescricao").innerHTML = traduzirClima(weathercode);
-
+mudarCorFundo(weathercode);
 
     //imprimindo valores
     document.getElementById("temp").innerHTML =

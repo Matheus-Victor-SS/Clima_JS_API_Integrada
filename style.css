@@ -5,13 +5,6 @@
 }
 
 body {
-    background: linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
-    background-image: 
-        radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 2px, transparent 2px),
-        linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
-    background-size: 40px 40px, 100% 100%;
-    background-repeat: repeat, no-repeat;
-    background-attachment: scroll, scroll;
     font-family: -apple-system, 'Segoe UI', 'Poppins', sans-serif;
     min-height: 100vh;
     display: flex;
@@ -20,6 +13,41 @@ body {
     padding: 20px;
     position: relative;
     overflow-x: hidden;
+    transition: background 0.5s ease;
+    background-repeat: repeat, no-repeat;
+    background-attachment: scroll;
+}
+
+/* Fundo padrão */
+body, 
+body.clima-limpo {
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.2) 2px, transparent 2px),
+                      linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
+    background-size: 40px 40px, 100% 100%;
+}
+
+body.clima-nublado {
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.15) 2px, transparent 2px),
+                      linear-gradient(135deg, #9ea7af 0%, #7a8591 50%, #5c6a7a 100%);
+    background-size: 40px 40px, 100% 100%;
+}
+
+body.clima-chuva {
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                      linear-gradient(135deg, #5c6a7a 0%, #3d4a5a 50%, #2a3542 100%);
+    background-size: 40px 40px, 100% 100%;
+}
+
+body.clima-neve {
+    background-image: radial-gradient(circle at 20% 40%, rgba(23, 141, 252, 0.178) 2px, transparent 2px),
+                      linear-gradient(135deg, #e8f0f8 0%, #d0e0f0 50%, #b8d0e8 100%);
+    background-size: 40px 40px, 100% 100%;
+}
+
+body.clima-tempestade {
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 2px, transparent 2px),
+                      linear-gradient(135deg, #2d3e4a 0%, #1a2a35 50%, #0d1a22 100%);
+    background-size: 40px 40px, 100% 100%;
 }
 
 
