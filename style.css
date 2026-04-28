@@ -27,17 +27,6 @@ body::before {
     pointer-events: none;
 }
 
-body::after {
-    content: '☁️';
-    position: absolute;
-    font-size: 120px;
-    opacity: 0.1;
-    top: 20px;
-    right: 20px;
-    pointer-events: none;
-    animation: float 20s infinite ease-in-out;
-}
-
 @keyframes float {
     0%, 100% { transform: translateX(0) translateY(0); }
     50% { transform: translateX(-30px) translateY(-20px); }

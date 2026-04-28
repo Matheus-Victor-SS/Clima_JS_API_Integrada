@@ -1,15 +1,21 @@
 //horário
 function Atualizar(){
 var res=document.getElementById('horario')
-var data = new Date()//importando Date()
-        var hora = data.getHours()<=9 ? "0"+data.getHours(): data.getHours()
-        var minuto = data.getMinutes()<=9 ? "0"+data.getMinutes(): data.getMinutes(),
-         segundos = data.getSeconds() <=9 ? "0"+data.getSeconds(): data.getSeconds()
-         horario.innerHTML = `${hora}:${minuto}:${segundos}`//coloca um do lado do outro
+//se nao achar horário da cidade usa esse padrão
+var fuso = window.timezoneAtual || 'America/Sao_Paulo';
+    
+    var horarioFormatado = new Date().toLocaleTimeString("pt-BR", {
+        timeZone: fuso,
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit"
+    })
+    
+    res.innerHTML = horarioFormatado
 }
 setInterval(Atualizar, 1000)
 
-//AUTO INCREMENT
+  //AUTO INCREMENT
 const input = document.getElementById('cidadee')
 const sugestoes = document.getElementById('sugestoes')
 const cidadesVistas = new Set();//armazena cidades duplicadas
@@ -79,10 +85,12 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     console.log(city.results[0].longitude)
     var lat = (city.results[0].latitude)
     var long = (city.results[0].longitude)
+    //guarda o horario da cidade da API
+    window.timezoneAtual = city.results[0].timezone
     }
 //entra em contato com a API e coloca os valores de latitude e longitude convertidos
 //no fim da requisição coloco os parametros e valores que quero
-fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m,rain,apparent_temperature`)
+fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&hourly=temperature_2m,relative_humidity_2m[0],wind_speed_10m,rain,apparent_temperature,weathercode,&timezone=auto`)
 //tranforma a resposta dela em json
 .then(res=>res.json())
 .then(dados =>{
