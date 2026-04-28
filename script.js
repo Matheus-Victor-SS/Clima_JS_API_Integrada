@@ -139,5 +139,24 @@ function traduzirClima(weathercode) {
 // COR DE FUNDO
 function mudarCorFundo(weathercode) {
     const body = document.body;
-
+    
+    // Remove todas as classes de clima anteriores
+    body.classList.remove('clima-limpo', 'clima-nublado', 'clima-chuva', 'clima-neve', 'clima-tempestade');
+    
+    // Adiciona a classe conforme o clima(muda o CSS)
+    if (weathercode === 0) {
+        body.classList.add('clima-limpo'); 
+    } 
+    else if (weathercode <= 3) {
+        body.classList.add('clima-nublado'); 
+    }
+    else if (weathercode <= 67) {
+        body.classList.add('clima-chuva');  
+    }
+    else if (weathercode <= 77) {
+        body.classList.add('clima-neve'); 
+    }
+    else if (weathercode >= 95) {
+        body.classList.add('clima-tempestade'); 
+    }
 }
