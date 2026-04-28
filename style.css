@@ -327,6 +327,11 @@ body {
  transition: all 0.3s ease;
 }
 
+.pais {
+    font-size: 13px;
+    color: #888;
+    margin-top: 2px;
+}
 .card-search::after, .card-weather::after {
     content: '';
     position: absolute;
