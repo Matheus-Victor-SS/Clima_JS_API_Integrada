@@ -18,41 +18,44 @@ body {
     background-attachment: scroll;
 }
 
-/* Fundo padrão */
+/* Fundo padrão e das classes de clima */
+/* Fundo padrão e das classes de clima */
 body, 
 body.clima-limpo {
-    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.2) 2px, transparent 2px),
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 2px, transparent 2px),
                       linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
     background-size: 40px 40px, 100% 100%;
 }
+
 body.clima-parcial {
-    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.2) 2px, transparent 2px),
-                      linear-gradient(135deg, #bfd4e8 0%, #9bb8d4 50%, #7a9ec0 100%);
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.3) 2px, transparent 2px),
+                      linear-gradient(135deg, #87CEEB 0%, #6BB5D9 50%, #4A9BC7 100%);
+    background-size: 40px 40px, 100% 100%;
 }
+
 body.clima-nublado {
-    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.15) 2px, transparent 2px),
-                      linear-gradient(135deg, #9ea7af 0%, #7a8591 50%, #5c6a7a 100%);
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.2) 2px, transparent 2px),
+                      linear-gradient(135deg, #B0C4DE 0%, #8FBCD6 50%, #6D9EC4 100%);
     background-size: 40px 40px, 100% 100%;
 }
 
 body.clima-chuva {
-    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 2px, transparent 2px),
-                      linear-gradient(135deg, #5c6a7a 0%, #3d4a5a 50%, #2a3542 100%);
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.15) 2px, transparent 2px),
+                      linear-gradient(135deg, #5B86A3 0%, #456B8C 50%, #2F5075 100%);
     background-size: 40px 40px, 100% 100%;
 }
 
 body.clima-neve {
-    background-image: radial-gradient(circle at 20% 40%, rgba(23, 141, 252, 0.178) 2px, transparent 2px),
-                      linear-gradient(135deg, #e8f0f8 0%, #d0e0f0 50%, #b8d0e8 100%);
+    background-image: radial-gradient(circle at 20% 40%, rgba(100, 150, 255, 0.15) 2px, transparent 2px),
+                      linear-gradient(135deg, #E8F4FD 0%, #D4EAF8 50%, #B8DDF5 100%);
     background-size: 40px 40px, 100% 100%;
 }
 
 body.clima-tempestade {
     background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.1) 2px, transparent 2px),
-                      linear-gradient(135deg, #2d3e4a 0%, #1a2a35 50%, #0d1a22 100%);
+                      linear-gradient(135deg, #4A5568 0%, #2D3748 50%, #1A202C 100%);
     background-size: 40px 40px, 100% 100%;
 }
-
 
 @keyframes float {
     0%, 100% { transform: translateX(0) translateY(0); }

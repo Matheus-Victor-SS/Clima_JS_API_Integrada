@@ -106,7 +106,7 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&
     //pega o numero traduzido e substitui no local do HTML
     var weathercode = dados.hourly.weathercode[0];
      document.getElementById("climaDescricao").innerHTML = traduzirClima(weathercode);
-mudarCorFundo(weathercode);
+    mudarCorFundo(weathercode);
 
     //imprimindo valores
     document.getElementById("temp").innerHTML =
@@ -142,7 +142,7 @@ function mudarCorFundo(weathercode) {
     const body = document.body;
     
     // Remove todas as classes de clima anteriores
-    body.classList.remove('clima-limpo', 'clima-nublado', 'clima-chuva', 'clima-neve', 'clima-tempestade');
+    body.classList.remove('clima-limpo', 'clima-parcial', 'clima-nublado', 'clima-chuva', 'clima-neve', 'clima-tempestade');
     
     // Adiciona a classe conforme o clima(muda o CSS)
     if (weathercode === 0) {
