@@ -79,7 +79,11 @@ fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(
     }else{
     //escreve a cidade, aparece o resultado encontrado mais proximo
     // e aparece as coordenadas
-    cidadeselecionada.innerHTML=`${city.results[0].name}`
+cidadeselecionada.innerHTML = `
+  ${city.results[0].name}<br>
+  ${city.results[0].country}
+`
+//adicionando nome do pais em baixo
 
     console.log(city.results[0].latitude)
     console.log(city.results[0].longitude)
