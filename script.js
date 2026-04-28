@@ -135,3 +135,9 @@ function traduzirClima(weathercode) {
     
     return "🌡️ Normal";
 }
+
+// COR DE FUNDO
+function mudarCorFundo(weathercode) {
+    const body = document.body;
+
+}
