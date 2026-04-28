@@ -126,7 +126,8 @@ mudarCorFundo(weathercode);
 // Traduzindo os valores de clima de numeros para clima
 function traduzirClima(weathercode) {
     if (weathercode === 0) return "☀️ Céu limpo";
-    if (weathercode <= 3) return "⛅ Parcial. Nublado";
+    if (weathercode === 1 || weathercode === 2) return "⛅ Parcial. nublado";
+    if (weathercode === 3) return "☁️ Nublado";
     if (weathercode <= 57) return "🌧️ Chuva";     // Inclui garoa e nevoeiro como chuva
     if (weathercode <= 67) return "🌧️ Chuva";
     if (weathercode <= 77) return "❄️ Neve";
@@ -147,7 +148,10 @@ function mudarCorFundo(weathercode) {
     if (weathercode === 0) {
         body.classList.add('clima-limpo'); 
     } 
-    else if (weathercode <= 3) {
+    else if (weathercode === 1 || weathercode === 2) {
+        body.classList.add('clima-parcial');    // Parcialmente nublado (1 e 2)
+    }
+    else if (weathercode === 3) {
         body.classList.add('clima-nublado'); 
     }
     else if (weathercode <= 67) {

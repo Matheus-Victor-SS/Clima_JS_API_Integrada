@@ -25,7 +25,10 @@ body.clima-limpo {
                       linear-gradient(135deg, #b8e1fc 0%, #7bc5f9 50%, #4a9ee6 100%);
     background-size: 40px 40px, 100% 100%;
 }
-
+body.clima-parcial {
+    background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.2) 2px, transparent 2px),
+                      linear-gradient(135deg, #bfd4e8 0%, #9bb8d4 50%, #7a9ec0 100%);
+}
 body.clima-nublado {
     background-image: radial-gradient(circle at 20% 40%, rgba(255,255,255,0.15) 2px, transparent 2px),
                       linear-gradient(135deg, #9ea7af 0%, #7a8591 50%, #5c6a7a 100%);
