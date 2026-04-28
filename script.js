@@ -63,7 +63,26 @@ input.addEventListener('input', async () => {
         sugestoes.appendChild(item)
     })
 })
+
+//função que esconde as sugestões
+function esconderSugestoes() {
+    setTimeout(() => {
+        sugestoes.innerHTML = '';
+    }, 200); // Pequeno delay para não interferir no clique
+}
+
+// Quando clicar fora do campo de pesquisa, esconde as sugestões
+document.addEventListener('click', function(event) {
+    const isClickInsideInput = input.contains(event.target);//se clicou no input
+    const isClickInsideSugestoes = sugestoes.contains(event.target);//clicou nas sugetsões
+    //senão limpa
+    if (!isClickInsideInput && !isClickInsideSugestoes) {
+        sugestoes.innerHTML = '';
+    }
+});
 function buscar(){
+    sugestoes.innerHTML = '';//ao clicar em pesquisar limpa as sugestões
+
     document.getElementById("resultado").classList.remove("escondido");
     var cidade = document.getElementById("cidadee").value
     var cidadeselecionada = document.getElementById("cidadeselecionada")
