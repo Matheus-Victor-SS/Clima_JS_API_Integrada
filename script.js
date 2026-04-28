@@ -103,6 +103,11 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&
 .then(res=>res.json())
 .then(dados =>{
     console.log(dados)
+    //pega o numero traduzido e substitui no local do HTML
+    var weathercode = dados.hourly.weathercode[0];
+     document.getElementById("climaDescricao").innerHTML = traduzirClima(weathercode);
+
+
     //imprimindo valores
     document.getElementById("temp").innerHTML =
   dados.hourly.temperature_2m[0] + "°C";
@@ -121,12 +126,12 @@ fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${long}&
 // Traduzindo os valores de clima de numeros para clima
 function traduzirClima(weathercode) {
     if (weathercode === 0) return "☀️ Céu limpo";
-    if (weathercode <= 3) return "⛅ Poucas nuvens";
+    if (weathercode <= 3) return "⛅ Parcial. Nublado";
     if (weathercode <= 57) return "🌧️ Chuva";     // Inclui garoa e nevoeiro como chuva
     if (weathercode <= 67) return "🌧️ Chuva";
     if (weathercode <= 77) return "❄️ Neve";
-    if (weathercode <= 86) return "🌧️ Pancadas";
-    if (weathercode >= 95) return "⛈️ Trovoada";
+    if (weathercode <= 86) return "🌧️ Pancadas de chuva";
+    if (weathercode >= 95) return "⛈️ Tempestade";
     
     return "🌡️ Normal";
 }
